@@ -29,7 +29,7 @@ void mostrarWatchlist(struct Filme watchlist[], int qtd){
 			printf("%s (%d)\n", watchlist[i].titulo, watchlist[i].ano);
 		}
 	} else {
-		printf("Sua lista est� vazia! Adicione filmes que deseja assistir!\n");
+		printf("Sua lista está vazia! Adicione filmes que deseja assistir!\n");
 	}
 	printf("\n");
 }
@@ -37,7 +37,7 @@ void mostrarWatchlist(struct Filme watchlist[], int qtd){
 void mostrarFilmesDisponiveis(struct Filme filmes[], int total){
 	int i;
 	printf("===========================");
-	printf("\n---- FILMES DISPON�VEIS ----\n");
+	printf("\n---- FILMES DISPONÍVEIS ----\n");
 	for (i = 0; i < total; i++) {
 		printf("%d. %s (%d)\n", i+1, filmes[i].titulo, filmes[i].ano);
 	}
@@ -47,7 +47,7 @@ void adicionarFilme(struct Filme **watchlist, int *qtd, struct Filme movie) {
 	int i;
 	for(i = 0; i < *qtd; i++){
 		if(strcmp((*watchlist)[i].titulo, movie.titulo) == 0) {
-			printf("\n'%s' j� est� na lista!\n", movie.titulo);
+			printf("\n'%s' já está na lista!\n", movie.titulo);
 			getch();
 			return;
 		}
@@ -58,7 +58,7 @@ void adicionarFilme(struct Filme **watchlist, int *qtd, struct Filme movie) {
 	
 	(*watchlist)[(*qtd) - 1]  = movie;
 	
-	printf("'%s' foi adicionado � sua watchlist!\n", movie.titulo);
+	printf("'%s' foi adicionado à sua watchlist!\n", movie.titulo);
 	getch();
 }
 
@@ -77,7 +77,7 @@ int compararTitulos(const char *a, const char *b) {
 
 void removerFilme(struct Filme **watchlist, int *qtd, char titulo[]){
 	if((*qtd) == 0) {
-		printf("Sua lista est� vazia!\n");
+		printf("Sua lista está vazia!\n");
 		getch();
 		return;
 	}
@@ -97,7 +97,7 @@ void removerFilme(struct Filme **watchlist, int *qtd, char titulo[]){
 			return;
 		}
 	}
-	printf("'%s' n�o foi encontrado na sua lista!\n", titulo);
+	printf("'%s' não foi encontrado na sua lista!\n", titulo);
 	getch();
 }
 
@@ -141,26 +141,26 @@ int buscarFilme(struct Filme filmes[], int total, char nome[]) {
 
 void avaliarFilme(struct Filme *movie) {
     do {
-        printf("D� uma nota de 0 a 5 estrelas para \"%s\": ", movie->titulo);
+        printf("Dê uma nota de 0 a 5 estrelas para \"%s\": ", movie->titulo);
         scanf("%d", &movie->estrelas);
         if (movie->estrelas < 0 || movie->estrelas > 5)
-            printf("Nota inv�lida! Digite um n�mero entre 0 e 5.\n");
+            printf("Nota inválida! Digite um número entre 0 e 5.\n");
     } while (movie->estrelas < 0 || movie->estrelas > 5);
 
-    printf("\nVoc� avaliou \"%s\" com %d estrela(s)!\n", movie->titulo, movie->estrelas);
+    printf("\nVocê avaliou \"%s\" com %d estrela(s)!\n", movie->titulo);
     getch();
 }
 
 void reviewFilme(struct Filme *movie) {
-    printf("\nEscreva sua avalia��o sobre \"%s\":\n", movie->titulo);
+    printf("\nEscreva sua avaliação sobre \"%s\":\n", movie->titulo);
     getchar();
     fgets(movie->avaliacao, 300, stdin);
     movie->avaliacao[strcspn(movie->avaliacao, "\n")] = '\0';
 
-    printf("\n Avalia��o realizada! \n");
+    printf("\n Avaliação realizada! \n");
     printf("-----------------------------------------\n");
     printf("Filme: %s\n", movie->titulo);
-    printf("Avalia��o: %s\n", movie->avaliacao);
+    printf("Avaliação: %s\n", movie->avaliacao)
     printf("-----------------------------------------\n");
     getch();
 }
@@ -173,28 +173,28 @@ int main () {
 	struct Filme filmesDisponiveis[12] = {
     {"O Labirinto do Fauno", "Guilherme del Toro", 2006, "Fantasia",
     "Durante a guerra civil espanhola, uma menina encontra um misterioso labirinto e um fauno que muda seu destino.", -1, ""},
-    {"Matrix", "Lana Wachowski e Lilly Wachowski", 1999, "A��o/Fic��o Cient�fica",
-    "Um hacker descobre que o mundo � uma simula��o e luta contra m�quinas que controlam a humanidade.", -1, ""},
-    {"Clube dos Cinco", "John Hughes", 1985, "Com�dia/Drama",
-    "Cinco estudantes de perfis diferentes cumprem deten��o e descobrem que t�m mais em comum do que pensam.", -1, ""},
+    {"Matrix", "Lana Wachowski e Lilly Wachowski", 1999, "Ação/Ficção Científica",
+    "Um hacker descobre que o mundo é uma simulação e luta contra máquinas que controlam a humanidade.", -1, ""},
+    {"Clube dos Cinco", "John Hughes", 1985, "Comédia/Drama",
+    "Cinco estudantes de perfis diferentes cumprem detenção e descobrem que tem mais em comum do que pensam.", -1, ""},
     {"A hora do Pesadelo", "Wes Craven", 1984, "Terror",
     "Um assassino invade os sonhos de adolescentes e os mata enquanto dormem.", -1, ""},
-    {"Interestelar", "Christopher Nolan", 2014, "Fic��o Cient�fica/Aventura",
+    {"Interestelar", "Christopher Nolan", 2014, "Ficção Científica/Aventura",
     "Astronautas viajam por um buraco de minhoca em busca de um novo lar para a humanidade.", -1, ""},
-    {"Stardust: O Mist�rio da Estrela", "Matthew Vaughn", 2007, "Fantasia",
-    "Um jovem cruza um muro m�gico para buscar uma estrela cadente e encontra bruxas e reis em disputa.", -1, ""},
-    {"A Escolha Perfeita", "Jason Moore", 2012, "Com�dia/Romance",
-    "Uma jovem entra em um grupo de canto a capella e descobre amizade e amor atrav�s da m�sica.", -1, ""},
-    {"O Fant�stico Sr. Raposo", "Wes Anderson", 2009, "Infantil/Com�dia",
-    "Um raposo tenta roubar fazendeiros vizinhos e coloca sua fam�lia e amigos em perigo.", -1, ""},
-    {"Possess�o", "Andrzej Zulawski", 1981, "Terror/Fantasia",
-    "Ap�s o fim de seu casamento, uma mulher entra em colapso e revela um segredo sobrenatural.", -1, ""},
-    {"Duna", "Denis Villeneuve", 2021, "Fic��o Cient�fica/Aventura",
-    "O jovem Paul Atreides enfrenta intrigas e batalhas em um planeta des�rtico onde h� uma subst�ncia poderosa.", -1, ""},
-    {"Clube da Luta", "David Fincher", 1999, "A��o/Crime",
-    "Um homem insone e desiludido conhece o carism�tico Tyler Durden e juntos fundam um clube secreto de lutas.", -1, ""},
-    {"Um Sonho de Liberdade", "Frank Darabont", 1994, "Thriller/Fic��o Policial",
-    "Um banqueiro � preso injustamente e encontra esperan�a e amizade ao longo dos anos na pris�o.", -1, ""}
+    {"Stardust: O Mistério da Estrela", "Matthew Vaughn", 2007, "Fantasia",
+    "Um jovem cruza um muro mágico para buscar uma estrela cadente e encontra bruxas e reis em disputa.", -1, ""},
+    {"A Escolha Perfeita", "Jason Moore", 2012, "Comédia/Romance",
+    "Uma jovem entra em um grupo de canto a capella e descobre amizade e amor através da música.", -1, ""},
+    {"O Fantástico Sr. Raposo", "Wes Anderson", 2009, "Infantil/Comédia",
+    "Um raposo tenta roubar fazendeiros vizinhos e coloca sua família e amigos em perigo.", -1, ""},
+    {"Possessão", "Andrzej Zulawski", 1981, "Terror/Fantasia",
+    "Após o fim de seu casamento, uma mulher entra em colapso e revela um segredo sobrenatural.", -1, ""},
+    {"Duna", "Denis Villeneuve", 2021, "Ficção Científica/Aventura",
+    "O jovem Paul Atreides enfrenta intrigas e batalhas em um planeta desértico onde há uma substância poderosa.", -1, ""},
+    {"Clube da Luta", "David Fincher", 1999, "Ação/Crime",
+    "Um homem insone e desiludido conhece o carismático Tyler Durden e juntos fundam um clube secreto de lutas.", -1, ""},
+    {"Um Sonho de Liberdade", "Frank Darabont", 1994, "Thriller/Ficção Policial",
+    "Um banqueiro é preso injustamente e encontra esperança e amizade ao longo dos anos na prisão.", -1, ""}
 };
 
 	
@@ -208,9 +208,9 @@ int main () {
 	do {
 		printf("==============================");
 		printf("\n----------- MENU ------------");
-		printf("\n1. Acessar watchlist \n2. Buscar filme \n3. Avaliar filme \n4. Mostrar filmes dispon�veis \n0. Sair");
+		printf("\n1. Acessar watchlist \n2. Buscar filme \n3. Avaliar filme \n4. Mostrar filmes disponíveis \n0. Sair");
 		
-		printf("\n\nSelecione uma op��o: ");
+		printf("\n\nSelecione uma opção: ");
 		scanf("%d", &opcao);
 		
 		switch(opcao) {
@@ -220,20 +220,20 @@ int main () {
 					system("cls");
 					mostrarWatchlist(watchlist, qtdWatchlist);
 					printf("\n1. Adicionar filme \n2. Remover filme \n3. Avaliar filme \n4. Voltar ao menu");
-					printf("\n\nSelecione uma op��o: ");
+					printf("\n\nSelecione uma opção: ");
 					scanf("%d", &subopcao);
 					
 					switch (subopcao) {
 	//1. adicionar filme---------------------------------------------------------------------
 						case 1: 
 							mostrarFilmesDisponiveis(filmesDisponiveis, totalFilmes);
-							printf("\n\nQual o n�mero do filme que deseja adicionar na lista? ");
+							printf("\n\nQual o número do filme que deseja adicionar na lista? ");
 							scanf("%d", &escolha);	
 							
 							if (escolha > 0 && escolha <= totalFilmes) {
 								adicionarFilme(&watchlist, &qtdWatchlist, filmesDisponiveis[escolha - 1]);
 							} else {
-								printf("Op��o inv�lida!");
+								printf("Opção inválida!");
 							}
 							break;
 
@@ -251,34 +251,34 @@ int main () {
 						case 3:
 							do {
 								system("cls");
-								printf("1. Dar nota \n2. Escrever avalia��o \n3. Voltar ao menu\n");
-								printf("\nSelecione uma op��o: ");
+								printf("1. Dar nota \n2. Escrever avaliação \n3. Voltar ao menu\n");
+								printf("\nSelecione uma opção: ");
 								scanf("%d", &subopcao);
 								
 								switch (subopcao) {
 									case 1:
 										system("cls");
 										mostrarFilmesDisponiveis(filmesDisponiveis, totalFilmes);
-										printf("\n\nQual o n�mero do filme que deseja dar nota? ");
+										printf("\n\nQual o número do filme que deseja dar nota? ");
 										scanf("%d", &escolha);
 										
 										if (escolha > 0 && escolha <= totalFilmes) {
 											avaliarFilme(&filmesDisponiveis[escolha - 1]);
 										} else {
-											printf("Op��o inv�lida!");
+											printf("Opção inválida!");
 										}
 										break;
 									
 									case 2: 
 										system("cls");
 										mostrarFilmesDisponiveis(filmesDisponiveis, totalFilmes);
-										printf("\n\nQual o n�mero do filme que deseja escrever uma avalia��o? ");
+										printf("\n\nQual o número do filme que deseja escrever uma avaliação? ");
 										scanf("%d", &escolha);
 										
 										if (escolha > 0 && escolha <= totalFilmes) {
 											reviewFilme(&filmesDisponiveis[escolha - 1]);
 										} else {
-											printf("Op��o inv�lida!");
+											printf("Opção inválida!");
 										}
 										break;
 										
@@ -287,7 +287,7 @@ int main () {
 										break;
 									
 									default: 
-										printf("Op��o inv�lida!\n");
+										printf("Opção inválida!\n");
 								}
 							} while(subopcao != 3);
 							break;
@@ -297,7 +297,7 @@ int main () {
 							break;
 						
 						default: 
-						printf("Op��o inv�lida!\n");
+						printf("Opção inválida!\n");
 					}
 				} while (subopcao != 4);
 				break;
@@ -319,21 +319,21 @@ int main () {
 						printf("\nFilme encontrado: \n");
 						printf("\n==============================\n");
 						printf("%s (%d)\n", filmesDisponiveis[pos].titulo, filmesDisponiveis[pos].ano);
-						printf("\nINFORMA��ES:\n");
-						printf("G�nero: %s\n", filmesDisponiveis[pos].genero);
-						printf("Dire��o: %s\n", filmesDisponiveis[pos].diretor);
+						printf("\nINFORMAÇÕES:\n");
+						printf("Gênero: %s\n", filmesDisponiveis[pos].genero);
+						printf("Direção: %s\n", filmesDisponiveis[pos].diretor);
 						printf("Sinopse: %s\n", filmesDisponiveis[pos].sinopse);
 						
 						if(filmesDisponiveis[pos].estrelas == -1){
-							printf("\nEstrelas: Voc� ainda n�o avaliou esse filme\n");
+							printf("\nEstrelas: Você ainda não avaliou esse filme\n");
 						} else{
 							printf("\nEstrelas: %d\n", filmesDisponiveis[pos].estrelas);
 						}
-						printf("Sua avalia��o: %s\n", filmesDisponiveis[pos].avaliacao);
+						printf("Sua avaliação: %s\n", filmesDisponiveis[pos].avaliacao);
 						printf("\n==============================\n");
 					
 						printf("\n1. Adicionar na watchlist \n2. Avaliar filme \n3. Buscar outro filme \n0. Voltar ao menu\n");
-						printf("\nSelecione uma op��o: ");
+						printf("\nSelecione uma opção: ");
 						scanf("%d", &subopcao);
 						
 						switch (subopcao){
@@ -355,8 +355,8 @@ int main () {
 							case 2:
 								do {
 									system("cls");
-									printf("1. Dar nota \n2. Escrever avalia��o \n3. Voltar ao menu\n");
-									printf("\nSelecione uma op��o: ");
+									printf("1. Dar nota \n2. Escrever avaliação \n3. Voltar ao menu\n");
+									printf("\nSelecione uma opção: ");
 									scanf("%d", &subopcao);
 									
 									switch (subopcao) {
@@ -375,7 +375,7 @@ int main () {
 											break;
 										
 										default: 
-											printf("Op��o inv�lida!\n");
+											printf("Opção inválida!\n");
 									}
 								} while(subopcao != 3);
 								break;
@@ -389,11 +389,11 @@ int main () {
 								break;
 							
 							default:
-								printf("Op��o inv�lida!\n");
+								printf("Opção inválida!\n");
 						}	
 						
 					} else {
-						printf("\nFilme n�o encontrado.\n");
+						printf("\nFilme não encontrado.\n");
 						getch();
 						system("cls");
 						break;
@@ -405,34 +405,34 @@ int main () {
 			case 3: 
 				do {
 					system("cls");
-					printf("1. Dar nota \n2. Escrever avalia��o \n3. Voltar ao menu\n");
-					printf("\nSelecione uma op��o: ");
+					printf("1. Dar nota \n2. Escrever avaliação \n3. Voltar ao menu\n");
+					printf("\nSelecione uma opção: ");
 					scanf("%d", &subopcao);
 					
 					switch (subopcao) {
 						case 1:
 							system("cls");
 							mostrarFilmesDisponiveis(filmesDisponiveis, totalFilmes);
-							printf("\n\nQual o n�mero do filme que deseja dar nota? ");
+							printf("\n\nQual o número do filme que deseja dar nota? ");
 							scanf("%d", &escolha);
 							
 							if (escolha > 0 && escolha <= totalFilmes) {
 								avaliarFilme(&filmesDisponiveis[escolha - 1]);
 							} else {
-								printf("Op��o inv�lida!");
+								printf("Opção inválida!");
 							}
 							break;
 						
 						case 2: 
 							system("cls");
 							mostrarFilmesDisponiveis(filmesDisponiveis, totalFilmes);
-							printf("\n\nQual o n�mero do filme que deseja escrever uma avalia��o? ");
+							printf("\n\nQual o número do filme que deseja escrever uma avaliação? ");
 							scanf("%d", &escolha);
 							
 							if (escolha > 0 && escolha <= totalFilmes) {
 								reviewFilme(&filmesDisponiveis[escolha - 1]);
 							} else {
-								printf("Op��o inv�lida!");
+								printf("Opção inválida!");
 							}
 							break;
 							
@@ -441,7 +441,7 @@ int main () {
 							break;
 						
 						default: 
-							printf("Op��o inv�lida!\n");
+							printf("Opção inválida!\n");
 					}
 				} while(subopcao != 3);
 			
@@ -460,7 +460,7 @@ int main () {
 				break;	
 			
 			default: 
-				printf("Op��o inv�lida!\n");
+				printf("Opção inválida!\n");
 		}	
 	}
 	 while (opcao != 0);{
